@@ -1,144 +1,167 @@
-<h2>Book Flight Tickets</h2>
-<form (submit)="onSubmit(bookingForm)" #bookingForm="ngForm">
-  <div class="form-group">
-    <label for="name">Name : </label>
-    <input
-      type="text"
-      name="firstName"
-      ngModel
-      class="form-control"
-      placeholder="Name"
-      required
-    />
-  </div>
-  <div class="form-group">
-    <label for="phone">Second Name : </label>
-    <input
-      type="text"
-      name="secondName"
-      ngModel
-      class="form-control"
-      placeholder="Second Name"
-      required
-    />
-  </div>
-  <div class="container countrySelection">
-    <div class="row">
-      <div class="col">
-        <h3>From</h3>
-      </div>
-      <div class="col">
-        <h3>To</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <ng-autocomplete
-          [data]="countries"
-          [searchKeyword]="keyword"
-          placeholder="Enter the Country Name"
-          historyIdentifier="countries"
-          [itemTemplate]="itemTemplate"
-          [notFoundTemplate]="notFoundTemplate"
-          name="fromCountry"
-          ngModel
-          required
-        >
-        </ng-autocomplete>
-        <ng-template #itemTemplate let-item>
-          <a [innerHTML]="item.name"></a>
-        </ng-template>
+<div class="container-fluid">
+  <h2>Book Flight Tickets</h2>
 
-        <ng-template #notFoundTemplate let-notFound>
-          <div [innerHTML]="notFound"></div>
-        </ng-template>
-      </div>
-      &#8596;
-      <div class="col">
-        <ng-autocomplete
-          [data]="countries"
-          [searchKeyword]="keyword"
-          placeholder="Enter the Country Name"
-          historyIdentifier="countries"
-          [itemTemplate]="itemTemplate"
-          [notFoundTemplate]="notFoundTemplate"
-          name="toCountry"
-          ngModel
-          required
-        >
-        </ng-autocomplete>
-        <ng-template #itemTemplate let-item>
-          <a [innerHTML]="item.name"></a>
-        </ng-template>
+  <form (submit)="onSubmit(bookingForm)" #bookingForm="ngForm">
+    <div class="container name">
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label for="name">First Name : </mat-label>
+            <input
+              matInput
+              type="text"
+              name="firstName"
+              ngModel
+              placeholder="Name"
+              required
+            />
+          </mat-form-field>
+        </div>
 
-        <ng-template #notFoundTemplate let-notFound>
-          <div [innerHTML]="notFound"></div>
-        </ng-template>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label for="phone">Second Name : </mat-label>
+            <input
+              matInput
+              type="text"
+              name="secondName"
+              ngModel
+              placeholder="Second Name"
+              required
+            />
+          </mat-form-field>
+        </div>
       </div>
     </div>
-  </div>
 
-  <mat-form-field appearance="outline">
-    <input matInput [matDatepicker]="mydatepicker" name="date" ngModel />
-    <mat-datepicker-toggle
-      matSuffix
-      [for]="mydatepicker"
-    ></mat-datepicker-toggle>
-    <mat-datepicker #mydatepicker></mat-datepicker>
-  </mat-form-field>
+    <div class="container address">
+      <div class="row">
+        <div class="col">
+          <h3>From</h3>
+        </div>
+        <div class="col">
+          <h3>To</h3>
+        </div>
+      </div>
+    </div>
 
-  <button
-    mat-raised-button
-    type="submit"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
-    [disabled]="bookingForm.invalid"
+    <div class="container select">
+      <div class="row">
+        <div class="col">
+          <ng-autocomplete
+            [data]="countries"
+            [searchKeyword]="keyword"
+            placeholder="Enter the Country Name"
+            historyIdentifier="countries"
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            name="fromCountry"
+            ngModel
+            required
+          >
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+          </ng-template>
+
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+        &#8596;
+        <div class="col">
+          <ng-autocomplete
+            [data]="countries"
+            [searchKeyword]="keyword"
+            placeholder="Enter the Country Name"
+            historyIdentifier="countries"
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            name="toCountry"
+            ngModel
+            required
+          >
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+          </ng-template>
+
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="container datepicker">
+      <mat-form-field appearance="fill">
+        <input matInput [matDatepicker]="mydatepicker" name="date" ngModel />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="mydatepicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #mydatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <button
+      mat-raised-button
+      type="submit"
+      data-bs-toggle="modal"
+      data-bs-target="#sampleTicket"
+      [disabled]="bookingForm.invalid"
+      autocomplete="off"
+    >
+      Book Now
+    </button>
+  </form>
+
+  <div
+    class="modal fade"
+    id="sampleTicket"
+    tabindex="-1"
+    aria-labelledby="sampleTicketLabel"
+    aria-hidden="true"
   >
-    Book Now
-  </button>
-</form>
-
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <h2>Your ticket has been Booked!!🥳</h2>
-        <mat-card>
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>First Name</th>
-                  <th>Second Name</th>
-                  <th>From</th>
-                  <th>To</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let detail of bookingDetails">
-                  <td>{{ detail.firstName }}</td>
-                  <td>{{ detail.secondName }}</td>
-                  <td>{{ detail.fromCountry.name }}</td>
-                  <td>{{ detail.toCountry.name }}</td>
-                  <td>{{ detail.date | date }}</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </mat-card>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="mat-raised-button" data-bs-dismiss="modal">
-          Close
-        </button>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h2>Your ticket has been Booked!!🥳</h2>
+          <mat-card>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let detail of bookingDetails">
+                    <td>{{ detail.firstName }}</td>
+                    <td>{{ detail.secondName }}</td>
+                    <td>{{ detail.fromCountry.name }}</td>
+                    <td>{{ detail.toCountry.name }}</td>
+                    <td>{{ detail.date | date }}</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </mat-card>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="mat-raised-button"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   </div>
