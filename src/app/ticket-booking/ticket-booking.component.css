@@ -1,0 +1,32 @@
+
+.ng-autocomplete {
+  width:50%;
+  max-width: 600px;
+  display: table;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+h2,.form-group{
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.countrySelection{
+  padding-top: 40px;
+}
+
+button {
+  background: #4bde5d;
+  color: white;
+ margin-left: 45%;
+}
+
+mat-form-field {
+  width:50%;
+  max-width: 600px;
+  display: table;
+  margin: 0 auto;
+  padding-top: 10px;
+}
