@@ -13,6 +13,10 @@ h2,.form-group{
   padding-top: 20px;
 }
 
+h2{
+  text-align: center;
+}
+
 .countrySelection{
   padding-top: 40px;
 }
@@ -20,13 +24,22 @@ h2,.form-group{
 button {
   background: #4bde5d;
   color: white;
- margin-left: 45%;
+  margin-left: 47%;
+  margin-top: 10px;
 }
 
 mat-form-field {
-  width:50%;
+  width:25%;
   max-width: 600px;
   display: table;
   margin: 0 auto;
-  padding-top: 10px;
+  padding-top: 20px;
+  margin-top: 20px;
+  background-color: white;
+}
+
+h3{
+  margin-left: 135px;
+  text-transform: capitalize;
+  font-weight: bold;
 }
